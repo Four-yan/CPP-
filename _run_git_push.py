@@ -3,7 +3,7 @@ import sys
 
 COMMANDS = [
     ['git', 'add', '.'],
-    ['git', 'commit', '-m', 'Update BudgetAlertModal wording'],
+    ['git', 'commit', '-m', 'Fix vite-plugin-pwa injectManifest configuration'],
     ['git', 'push', 'origin', 'main']
 ]
 

@@ -26,7 +26,7 @@ try {
 }
 
 /** 路由切换动画包装 */
-function AnimatedRoutes() {
+function AnimatedRoutes({ location }: { location: import('react-router-dom').Location }) {
   return (
     <Routes location={location}>
       <Route path="/" element={<div key="home" className="page-enter"><HomePage /></div>} />
@@ -41,11 +41,11 @@ function AnimatedRoutes() {
 /** 带离线横幅和安装引导的包装 */
 function AppShell() {
   const { transactions } = useApp();
-  return <AnimatedRoutesWithBanner transactions={transactions} />;
+  const location = useLocation();
+  return <AnimatedRoutesWithBanner transactions={transactions} location={location} />;
 }
 
-function AnimatedRoutesWithBanner({ transactions }: { transactions: import('./types').Transaction[] }) {
-  const location = useLocation();
+function AnimatedRoutesWithBanner({ transactions, location }: { transactions: import('./types').Transaction[]; location: import('react-router-dom').Location }) {
   const { isOnline, wasOffline } = useOnlineStatus();
   const { showInstallBanner, deferredPrompt, handleInstall, dismissInstallBanner } = useInstallPrompt();
   const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
@@ -94,7 +94,7 @@ function AnimatedRoutesWithBanner({ transactions }: { transactions: import('./ty
       )}
 
       <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-main)', transition: 'background 0.3s' }}>
-        <AnimatedRoutes />
+        <AnimatedRoutes location={location} />
         <BottomNav />
       </div>
     </>
