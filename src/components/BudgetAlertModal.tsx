@@ -17,8 +17,8 @@ function getMessage(alert: BudgetAlert, style: string): { title: string; body: s
     emoji: '🥺',
     title: isOver ? `${category}预算超啦！` : `${category}快到预算了`,
     body: isOver
-      ? `宝贝，${category}已花了 ${spentStr}，超出预算 ${limitStr} 了，下次省着点哦～`
-      : `宝贝，${category}预算已用了 ${percentage}%（${spentStr}/${limitStr}），省着点哦 🥺`
+      ? `鱼鱼，${category}已花了 ${spentStr}，超出预算 ${limitStr} 了，下次省着点哦～`
+      : `鱼鱼，${category}预算已用了 ${percentage}%（${spentStr}/${limitStr}），省着点哦 🥺`
   };
 
   if (style === 'normal') return {
@@ -34,7 +34,7 @@ function getMessage(alert: BudgetAlert, style: string): { title: string; body: s
     title: isOver ? '超支警告！！' : '快超了警告！',
     body: isOver
       ? `🚨 你个败家玩意！${category}已经花了 ${spentStr}，预算才 ${limitStr}，给我住手！`
-      : `🚨 你个败家玩意！${category}快花超了！已用 ${percentage}%，再乱花揍你！`
+      : `🚨 你个败家玩意！${category}快花超了！已用 ${percentage}%，再乱花揍你屁股！`
   };
 
   // funny
@@ -42,7 +42,7 @@ function getMessage(alert: BudgetAlert, style: string): { title: string; body: s
     emoji: '💀',
     title: isOver ? '钱包：我死了' : '钱包：我撑不住了',
     body: isOver
-      ? `💀 钱包已阵亡！${category}花了 ${spentStr}，预算 ${limitStr} 早就没了，主人你咋这样！`
+      ? `💀 钱包已阵亡！${category}花了 ${spentStr}，预算 ${limitStr} 早就没了，鱼鱼你咋这样！`
       : `💀 钱包：我撑不住了... ${category}已燃烧 ${percentage}%（${spentStr}/${limitStr}），求你别花了！`
   };
 }
@@ -108,7 +108,7 @@ export default function BudgetAlertModal({ alert, style, onClose }: Props) {
         {/* 进度环 */}
         <div style={{ margin: '0 auto 16px', position: 'relative', width: '80px', height: '80px' }}>
           <svg width="80" height="80" viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="34" fill="none" stroke="#F1EFE8" strokeWidth="8"/>
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#F1EFE8" strokeWidth="8" />
             <circle
               cx="40" cy="40" r="34" fill="none"
               stroke={isOver ? '#E24B4A' : alert.percentage >= 80 ? '#EF9F27' : '#534AB7'}
